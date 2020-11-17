@@ -64,7 +64,7 @@ class Contact extends Component {
         else if (this.state.touched.firstName && firstName.length > 10)
             errors.firstName = 'First Name should be <= 10 characters';
 
-        if (this.state.touched.lastlastNameName && lastName.length < 3)
+        if (this.state.touched.lastName && lastName.length < 3)
             errors.lastName = 'Last Name should be >= 3 characters';
         else if (this.state.touched.lastName && lastName.length > 10)
             errors.lastName = 'Last Name should be <= 10 characters';
