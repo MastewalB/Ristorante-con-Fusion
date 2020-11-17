@@ -4,10 +4,15 @@ import { Link } from 'react-router-dom';
 
 
 function RenderLeader({ leader }) {
+
+    const imgStyle = {
+        maxHeight: 150,
+        maxWidth: 150
+    }
     return (
         <Media tag="li">
             <Media left middle>
-                <Media object src={leader.image} alt={leader.name} />
+                <Media object src={leader.image} style={imgStyle} alt={leader.name} />
             </Media>
             <Media body className="ml-5">
                 <Media heading>
