@@ -31,6 +31,7 @@ class CommentForm extends Component {
     handleCommentSubmit(values) {
         console.log("Current state is " + JSON.stringify(values));
         alert("Current state is " + JSON.stringify(values));
+        this.toggleModal();
     }
 
 
