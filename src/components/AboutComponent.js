@@ -1,7 +1,8 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Fade, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
-
+import { baseUrl } from '../shared/baseUrl';
+import { Stagger } from 'react-animation-components';
 
 function RenderLeader({ leader }) {
 
@@ -11,16 +12,19 @@ function RenderLeader({ leader }) {
     }
     return (
         <Media tag="li">
+
             <Media left middle>
-                <Media object src={leader.image} style={imgStyle} alt={leader.name} />
+                <Media object src={baseUrl + leader.image} style={imgStyle} alt={leader.name} />
             </Media>
             <Media body className="ml-5">
-                <Media heading>
-                    <p>{leader.name}</p>
+                <Fade>
+                    <Media heading>
+                        <p>{leader.name}</p>
 
-                </Media>
-                <p>{leader.designation}</p>
-                <p>{leader.description}</p>
+                    </Media>
+                    <p>{leader.designation}</p>
+                    <p>{leader.description}</p>
+                </Fade>
             </Media>
         </Media>
     );
@@ -28,9 +32,11 @@ function RenderLeader({ leader }) {
 
 function About(props) {
 
-    const leaders = props.leaders.map((leader) => {
+    const leaders = props.leaders.leaders.map((leader) => {
         return (
-            <RenderLeader leader={leader} />
+            <RenderLeader leader={leader}
+                isLoading={props.leaderLoading}
+                errMess={props.leaderErrMess} />
         );
     });
 
