@@ -33,7 +33,7 @@ class CommentForm extends Component {
 
     handleCommentSubmit(values) {
         this.toggleModal();
-        this.props.addComment(this.props.dishId, values.rating, values.author, values.comment);
+        this.props.postComment(this.props.dishId, values.rating, values.author, values.comment);
     }
 
 
@@ -67,7 +67,7 @@ class CommentForm extends Component {
                             <Row className="form-group">
 
                                 <Col>
-                                    <Control.text model=".name" id="name" name="name"
+                                    <Control.text model=".author" id="author" name="author"
                                         placeholder="Your Name"
                                         className="form-control"
                                         validators={{
@@ -110,7 +110,7 @@ class CommentForm extends Component {
     }
 }
 
-function RenderComments({ comments, addComment, dishId }) {
+function RenderComments({ comments, postComment, dishId }) {
     if (comments != null) {
         const com = comments.map((comment) => {
             let date = new Date(comment.date);
@@ -119,7 +119,8 @@ function RenderComments({ comments, addComment, dishId }) {
                 <div>
                     <ul className="list-unstyled">
                         <li>-- {comment.comment}</li>
-                        <li>{comment.author}, {date.getDate()}, {date.getFullYear()}</li>
+                        <li>{comment.author},     {new Intl.DateTimeFormat('en-us',
+                            { year: 'numeric', month: 'short', day: '2-digit' }).format(new Date(comment.date))}</li>
                     </ul>
                 </div>
             )
@@ -128,7 +129,7 @@ function RenderComments({ comments, addComment, dishId }) {
             <div className="col-12">
                 <h4>Comments</h4>
                 {com}
-                <CommentForm dishId={dishId} addComment={addComment} />
+                <CommentForm dishId={dishId} postComment={postComment} />
             </div>
         );
     } else {
@@ -203,7 +204,7 @@ const DishDetail = (props) => {
                 </div>
                 <div className="col-12 col-md-5 md-1">
                     <RenderComments comments={props.comments}
-                        addComment={props.addComment}
+                        postComment={props.postComment}
                         dishId={props.dish.id} />
 
                 </div>
