@@ -1,8 +1,8 @@
 import React from 'react';
-import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Fade, Media } from 'reactstrap';
+import { Breadcrumb, BreadcrumbItem, Card, CardBody, CardHeader, Media } from 'reactstrap';
 import { Link } from 'react-router-dom';
 import { baseUrl } from '../shared/baseUrl';
-import { Stagger } from 'react-animation-components';
+import { Fade } from 'react-animation-components';
 
 function RenderLeader({ leader }) {
 
@@ -17,7 +17,7 @@ function RenderLeader({ leader }) {
                 <Media object src={baseUrl + leader.image} style={imgStyle} alt={leader.name} />
             </Media>
             <Media body className="ml-5">
-                <Fade>
+                <Fade in>
                     <Media heading>
                         <p>{leader.name}</p>
 
