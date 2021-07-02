@@ -115,7 +115,6 @@ class CommentForm extends Component {
 function RenderComments({ comments, postComment, dishId }) {
     if (comments != null) {
         const com = comments.map((comment) => {
-            let date = new Date(comment.date);
             return (
 
                 <div>
