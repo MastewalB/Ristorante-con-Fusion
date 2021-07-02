@@ -1,5 +1,4 @@
 import * as ActionTypes from './ActionTypes';
-//import { DISHES } from '../shared/dishes';
 import { baseUrl } from '../shared/baseUrl';
 
 
@@ -45,7 +44,7 @@ export const postComment = (dishId, rating, author, comment) => (dispatch) => {
         .then(response => dispatch(addComment(response)))
         .catch(error => {
             console.log('Post Comment', error.message);
-            alert('Comment Not Posted')
+            alert('Comment Not Posted');
         })
 
 }
